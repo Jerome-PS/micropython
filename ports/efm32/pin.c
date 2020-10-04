@@ -63,3 +63,18 @@ void mp_hal_pin_write(mp_hal_pin_obj_t pin, int value)
 	else
 		GPIO_PinOutClear(pin->port, pin->pin);
 }
+
+void gpio_pullup_en(mp_hal_pin_obj_t pin)
+{
+	GPIO_PinModeSet(pin->port, pin->pin, gpioModeInputPull, 1);
+}
+
+void gpio_pulldown_en(mp_hal_pin_obj_t pin)
+{
+	GPIO_PinModeSet(pin->port, pin->pin, gpioModeInputPull, 0);
+}
+
+void gpio_pullup_dis(mp_hal_pin_obj_t pin)
+{
+	GPIO_PinModeSet(pin->port, pin->pin, gpioModeInput, 0);
+}
